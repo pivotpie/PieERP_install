@@ -103,12 +103,12 @@ ask_twice() {
         fi
     done
 }
-echo -e "${LIGHT_BLUE}Welcome to the ERPNext Installer...${NC}"
+echo -e "${LIGHT_BLUE}Welcome to the PieERP Installer...${NC}"
 echo -e "\n"
 sleep 3
 
 # Prompt user for version selection with a preliminary message
-echo -e "${YELLOW}Please enter the number of the corresponding ERPNext version you wish to install:${NC}"
+echo -e "${YELLOW}Please enter the number of the corresponding PieERP version you wish to install:${NC}"
 
 versions=("Version 13" "Version 14" "Version 15")
 select version_choice in "${versions[@]}"; do
@@ -207,7 +207,7 @@ py_major=$(echo "$py_version" | cut -d '.' -f 1)
 py_minor=$(echo "$py_version" | cut -d '.' -f 2)
 
 if [ -z "$py_version" ] || [ "$py_major" -lt 3 ] || [ "$py_major" -eq 3 -a "$py_minor" -lt 10 ]; then
-    echo -e "${LIGHT_BLUE}It appears this instance does not meet the minimum Python version required for ERPNext 14 (Python3.10)...${NC}"
+    echo -e "${LIGHT_BLUE}It appears this instance does not meet the minimum Python version required for PieERP 14 (Python3.10)...${NC}"
     sleep 2 
     echo -e "${YELLOW}Not to worry, we will sort it out for you${NC}"
     sleep 4
@@ -368,9 +368,9 @@ sudo chmod -R o+rx /home/$(echo $USER)
 
 bench new-site $site_name --db-root-password $sqlpasswrd --admin-password $adminpasswrd
 
-# Prompt user to confirm if they want to install ERPNext
+# Prompt user to confirm if they want to install PieERP
 
-echo -e "${LIGHT_BLUE}Would you like to install ERPNext? (yes/no)${NC}"
+echo -e "${LIGHT_BLUE}Would you like to install PieERP? (yes/no)${NC}"
 read -p "Response: " erpnext_install
 erpnext_install=$(echo "$erpnext_install" | tr '[:upper:]' '[:lower:]')
 case "$erpnext_install" in
@@ -508,12 +508,12 @@ case "$continue_prod" in
     fi
 
     echo -e "${GREEN}--------------------------------------------------------------------------------"
-    echo -e "Congratulations! You have successfully installed ERPNext $version_choice."
-    echo -e "You can start using your new ERPNext installation by visiting https://$site_name"
+    echo -e "Congratulations! You have successfully installed PieERP $version_choice."
+    echo -e "You can start using your new PieERP installation by visiting https://$site_name"
     echo -e "(if you have enabled SSL and used a Fully Qualified Domain Name"
     echo -e "during installation) or http://$server_ip to begin."
-    echo -e "Install additional apps as required. Visit https://docs.erpnext.com for Documentation."
-    echo -e "Enjoy using ERPNext!"
+    echo -e "Install additional apps as required."
+    echo -e "Enjoy using PieERP!"
     echo -e "--------------------------------------------------------------------------------${NC}"
         ;;
     *)
@@ -532,9 +532,9 @@ case "$continue_prod" in
     sleep 5
 
     echo -e "${GREEN}-----------------------------------------------------------------------------------------------"
-    echo -e "Congratulations! You have successfully installed Frappe and ERPNext $version_choice Development Environment."
+    echo -e "Congratulations! You have successfully installed Frappe and PieERP $version_choice Development Environment."
     echo -e "Start your instance by running bench start to start your server and visiting http://$server_ip:8000"
-    echo -e "Install additional apps as required. Visit https://frappeframework.com for Developer Documentation."
+    echo -e "Install additional apps as required."
     echo -e "Enjoy development with Frappe!"
     echo -e "-----------------------------------------------------------------------------------------------${NC}"
     ;;
